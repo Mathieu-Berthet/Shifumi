@@ -6,6 +6,8 @@ import { text } from "stream/consumers";
 
 let playTab = ["Ciseau", "Pierre", "Feuille"]; // Pour les autres mods, un autre tableau à chaque fois, différents, pour l'ordi
 
+let ordiTab = ["Ciseau", "Pierre", "Feuille", "Feuille", "Feuille", "Feuille", "Feuille", "Feuille", "Feuille", "Feuille"];
+
 let nbVictory:any = 0;
 let nbNul:any = 0;
 let nbLose:any = 0;
@@ -69,7 +71,7 @@ export default function Home() {
     switch(playTab[playerChoice])
     {
       case "Ciseau":
-        switch(playTab[ordiChoice])
+        switch(ordiTab[ordiChoice])
         {
           case "Ciseau": 
           {
@@ -103,7 +105,7 @@ export default function Home() {
         }
         break;
       case "Pierre":
-        switch(playTab[ordiChoice])
+        switch(ordiTab[ordiChoice])
         {
           case "Ciseau": 
           {
@@ -137,7 +139,7 @@ export default function Home() {
         }
         break;
       case "Feuille":
-        switch(playTab[ordiChoice])
+        switch(ordiTab[ordiChoice])
         {
           case "Ciseau": 
           {
@@ -177,7 +179,7 @@ export default function Home() {
 
   function saveResult(playerChoice:number, ordiChoice:number)
   {
-    tabResult[id] = {id: id, choixPlayer: playTab[playerChoice], choixOrdi: playTab[ordiChoice], resultat: stringResult};
+    tabResult[id] = {id: id, choixPlayer: playTab[playerChoice], choixOrdi: ordiTab[ordiChoice], resultat: stringResult};
     id++;
   }
 
@@ -192,7 +194,7 @@ export default function Home() {
     getChoicePlayer(formData);
 
     //On récupère le choix de l'ordinateur
-    choixOrdi = getRandomInt(3);
+    choixOrdi = getRandomInt(ordiTab.length);
 
     // On compare les résultats du joueur et de l'Ordi
     checkResult(choixPlayer, choixOrdi);
@@ -221,7 +223,7 @@ export default function Home() {
       </div> */}
         <nav className="flex flex-row w-full justify-center mt-2">
           <Link href='./Rock' className="flex border-solid border-black border w-1/3 justify-center underline">Autre version de l'IA 1</Link>
-          <Link href='./Paper' className="flex border-solid border-black border w-1/3 justify-center underline">Autre version de l'IA 2</Link>
+          <Link href='./' className="flex border-solid border-black border w-1/3 justify-center underline">Version de Base</Link>
           <Link href='./Scissors' className="flex border-solid border-black border w-1/3 justify-center underline">Autre version de l'IA 3</Link>
         </nav>
       </header>
